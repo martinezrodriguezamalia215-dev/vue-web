@@ -4,7 +4,19 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+body {
+  font-family: "BJCree", serif;;
+
+}
+@font-face {
+  font-family: batman ;
+  src: url("../fonts/batmfo__.ttf")
+}
+
+
+
+/* Tailwind CSS v4 custom variant. */
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
   --font-heading: var(--font-sans);
