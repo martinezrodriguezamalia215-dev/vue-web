@@ -19,7 +19,7 @@ import { RouterLink } from 'vue-router';
           </Button>
 
           <Button>
-            <RouterLink to="/batman">batman </RouterLink>
+            <RouterLink to="/Batman">Batman </RouterLink>
           </Button>
 
           <Button>

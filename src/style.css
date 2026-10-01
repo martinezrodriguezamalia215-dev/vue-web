@@ -13,8 +13,6 @@ body {
   src: url("../fonts/batmfo__.ttf")
 }
 
-
-
 /* Tailwind CSS v4 custom variant. */
 @custom-variant dark (&:where(.dark, .dark *));
 

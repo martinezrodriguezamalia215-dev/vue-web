@@ -1,8 +1,8 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Casa from "../paginas/casa/Casa.vue";
-import Ironman from "../paginas/Ironman/Ironman.vue";
 import Primus from "../paginas/Simpson/Primus.vue";
 import Responsum from "../paginas/indecision/Responsum.vue";
+import Batman from "../paginas/Batman/Batman.vue";
 
 export const router = createRouter({
     history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -13,9 +13,9 @@ export const router = createRouter({
             component: Casa
         },
         {
-            path: "/Ironman" ,
-            name: "ironman",
-            component: Ironman
+            path: "/Batman" ,
+            name: "batman",
+            component: Batman
         },
         {
             path: "/Simpson" ,
