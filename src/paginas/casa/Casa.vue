@@ -5,28 +5,32 @@ import { RouterLink } from 'vue-router';
 
 <template>
     
-     <div class="fondo-home">
-
-      <h1>
-      <span>Diseño </span>Web y 
-      <br>
-      apps <span>Interactivas</span>
+     <div class="bg-domus-navy h-screen w-screen text-white font-serif text-center flex flex-col items-center gap-10 fixed overflow-hidden">
+      <img class="absolute opacity-20" src="/imagines/tonitrui.png"/>
+      <h1 class="text-5xl md:text-7xl lg:text-9xl font-bold pb-15 transition-all z-10">
+        <span class="text-domus-cyan">Diseño </span>Web y 
+        <br>
+        Apps <span class="text-domus-cyan">Interactivas</span>
       </h1>
 
-        <div class="botones">
-          <Button>
+      <p class="text-lg md:text-2xl transition">
+        Aprendiendo a crear aplicaciones web.
+      </p>
+
+        <div class="z-10">
+          <Button variant="domus" class="mr-2">
             <RouterLink to="/indecision">Si o no </RouterLink>
           </Button>
 
-          <Button>
+          <Button variant="domus" class="mr-2">
             <RouterLink to="/Batman">Batman </RouterLink>
           </Button>
 
-          <Button>
+          <Button variant="domus" class="mr-2">
             <RouterLink to="/Simpson">Simpson </RouterLink>
           </Button>
 
-          <Button>
+          <Button variant="domus" class="mr-2">
             <a href="http://www.upv.es">UPV</a>
           </Button>
 
@@ -41,30 +45,4 @@ import { RouterLink } from 'vue-router';
   </div>
 </template>
 
-<style scoped>
-
-
-h1 {
-  color: #a370c9;
-  font-size: 3rem;
-}
-
-.fondo-home {
-  background-color: rgb(92, 48, 111);
-  height: 100vh;
-  color: rgb(198, 162, 226);
-}
-
-
-.botones > * {
-  margin-right: 0.5rem;
-  background-color: rgb(151, 163, 80);
-} 
-
-
-.botones > Button:hover {
-  background-color: rgba(rgb(83, 57, 17));
-
-} 
-
-</style>
+<style scoped></style>

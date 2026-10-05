@@ -26,16 +26,16 @@ const element = document.getElementById(sectionId)
 
 <template>
   <div class="batman">
-    <div class="extra-nav">
+    <div class="extra-nav flex flex-col sm:flex-col justify-between px-3">
       <RouterLink to="/">
         <House class="icon-home" />
       </RouterLink>
 
       <NavigationMenu>
-        <NavigationMenuList>
+        <NavigationMenuList class="flex flex-col sm:flex-row">
           <NavigationMenuList>
             <a href="#" @click.prevent="scrollToSection('#')">
-              <NavigationMenuLink :class="navigationMenuTriggerStyle()">
+              <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'text-md hover:bg-brand-purple hover:text-white transition-colors']">
                 Portada
               </NavigationMenuLink>
             </a>
@@ -43,7 +43,7 @@ const element = document.getElementById(sectionId)
 
           <NavigationMenuItem>
             <a href="#vehiculis"  @click.prevent="scrollToSection('vehiculis')">
-              <NavigationMenuLink :class="navigationMenuTriggerStyle()">
+              <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'text-md hover:bg-brand-purple hover:text-white transition-colors']">
                 Vehículos
               </NavigationMenuLink>
             </a>
@@ -51,15 +51,15 @@ const element = document.getElementById(sectionId)
 
           <NavigationMenuItem>
             <a href="#videre" @click.prevent="scrollToSection('videre')">
-              <NavigationMenuLink :class="navigationMenuTriggerStyle()">
+              <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'text-md hover:bg-brand-purple hover:text-white transition-colors']">
                 Imagenes
               </NavigationMenuLink>
             </a>
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <a href="#contactous" @click.prevent="scrollToSection('contactous')">
-              <NavigationMenuLink :class="navigationMenuTriggerStyle()">
+            <a href="#contactus" @click.prevent="scrollToSection('contactous')">
+              <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'text-md hover:bg-brand-purple hover:text-white transition-colors']">
                 Contacto
               </NavigationMenuLink>
             </a>
