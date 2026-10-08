@@ -9,6 +9,17 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 
+import { Card, CardContent } from '@/components/ui/card'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel'
+
+import Autoplay from 'embla-carousel-autoplay'
+
 const scrollToSection = (sectionId: string) => {
   if (sectionId === "#") {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -21,6 +32,11 @@ const element = document.getElementById(sectionId)
     element.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 };
+
+const photos = ["justice", "arkham", "superman", "varios", "villana", "villano", "grupo", "robin", "anne", "joker", "resplandor", "cat", "gafas", "league", "fondoVerde"]; 
+
+
+
 
 </script>
 
@@ -114,6 +130,38 @@ const element = document.getElementById(sectionId)
       </div>
   </section>
 
+<section id="videre" class="w-full flex justify-center items-center min-h-[60vh] lg:min-h-[95vh] bg-gray-900">
+  <Carousel 
+   :plugins="[Autoplay({
+      delay: 2000,
+    })]"
+    class="w-full max-w-md md:max-w-2xl lg:max-w-4xl bg-gray-900 "
+    :opts="{
+      loop:true,
+      dragFree:true
+    
+    }">
+    <CarouselContent >
+      <CarouselItem v-for="i in photos.length" :key="i">
+        <div class="p-1">
+          <Card class="bg-yellow-200 border-0">
+            <CardContent class="flex aspect-6/4 items-center justify-center p-6">
+              <img
+                :src="`/imagines/batman/${photos[i - 1]}.jpg`"
+                class="w-full h-full object-cover "
+              
+               />
+            </CardContent>
+          </Card>
+        </div>
+      </CarouselItem>
+    </CarouselContent>
+    <CarouselPrevious class="hidden md-flex items-center bg-gray-900 text-white" />
+    <CarouselNext  class="hidden md:flex justify-center bg-gray-900 text-white"  />
+  </Carousel>
+
+
+</section>
 
 </template>
 
