@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { House } from '@lucide/vue';
+import { House, Menu } from '@lucide/vue';
+import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import {
   NavigationMenu,
@@ -10,25 +11,42 @@ import {
 } from '@/components/ui/navigation-menu'
 import CarrusImaginum from '@/components/carrusImaginum.vue';
 import { scrollToSection } from '@/utils/scrollToSection';
-
-
-
-
+import { Toggle } from '@/components/ui/toggle'
 
 const photos = ["justice", "arkham", "superman", "varios", "villana", "villano", "grupo", "robin", "anne", "joker", "resplandor", "cat", "gafas", "league", "fondoVerde"]; 
 
+const videreMenu = ref<boolean>(true)
 
+const handleResize = () => {
+  if (window.innerWidth < 640) {
+    videreMenu.value = false;
+  } else {
+    videreMenu.value = true;
+  }
+};
+
+onMounted(() => {
+  handleResize();
+  window.addEventListener('resize', handleResize);
+});
 
 
 </script>
 
 <template>
   <div class="batman">
-    <div class="extra-nav flex flex-col sm:flex-col justify-between px-3">
+
+      <Toggle
+      class="fixed top-2 right-2 z-50 bg-amber-400 opacity-80 sm:hidden"
+      @click="videreMenu = !videreMenu"
+    >
+        <Menu />
+      </Toggle>
+
+    <nav v-if="videreMenu" class="extra-nav flex flex-col sm:flex-col justify-between px-3">
       <RouterLink to="/">
         <House class="icon-home" />
       </RouterLink>
-
       <NavigationMenu>
         <NavigationMenuList class="flex flex-col sm:flex-row">
           <NavigationMenuList>
@@ -64,7 +82,7 @@ const photos = ["justice", "arkham", "superman", "varios", "villana", "villano",
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-    </div>
+    </nav>
   </div>
 
 
