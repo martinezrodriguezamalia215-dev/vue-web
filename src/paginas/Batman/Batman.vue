@@ -12,18 +12,13 @@ import {
 import CarrusImaginum from '@/components/carrusImaginum.vue';
 import { scrollToSection } from '@/utils/scrollToSection';
 import { Toggle } from '@/components/ui/toggle'
-
+import { useMouseMotio } from '@/composables/UseMouseMotio'
 const photos = ["justice", "arkham", "superman", "varios", "villana", "villano", "grupo", "robin", "anne", "joker", "resplandor", "cat", "gafas", "league", "fondoVerde"]; 
 
-interface Cordinatas {
-  x: number;
-  y: number;
-}
-
+const { mousePosition, cumMouseMove, cumMouseLeave } = useMouseMotio()
 
 const videreMenu = ref<boolean>(true)
 
-const mousePositione = ref<Cordinatas>({ x: 0 , y: 0 })
 
 const handleResize = () => {
   if (window.innerWidth < 640) {
@@ -43,30 +38,7 @@ onUnmounted(() => {
   window.removeEventListener('resize', handleResize);
 });
 
-const cumMouseMove = (e: MouseEvent) => {
 
-  const rect = (e.target as HTMLElement).getBoundingClientRect()
-
-    const centerX = rect.left + rect.width / 2
-    const centerY = rect.top + rect.height / 2
-    
-    const mouseX = e.clientX - rect.left
-    const mouseY = e.clientY - rect.top
-
-mousePositione.value = {
-  x: (centerX - mouseX) * 0.2,
-  y: (centerY - mouseY) * 0.2
-  }
-}
-
-const cumMouseLeave = () => {
-  mousePositione.value = {
-    x: 0,
-    y:0
-  }
-
-
-}
 
 </script>
 
@@ -134,8 +106,8 @@ const cumMouseLeave = () => {
           @mousemove="cumMouseMove"
           @mouseleave="cumMouseLeave"
           :style="{
-            backgroundPositionX: `calc(50% + ${mousePositione.x}px)`,
-            backgroundPositionY: `calc(50% + ${mousePositione.y}px)`,
+            backgroundPositionX: `calc(50% + ${mousePosition.x}px)`,
+            backgroundPositionY: `calc(50% + ${mousePosition.y}px)`,
             transition: 'background-position 0.1s ease-out'
           }"
         ></div>
