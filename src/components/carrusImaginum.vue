@@ -40,7 +40,7 @@ const props = withDefaults(defineProps<Props>(), {
       <CarouselItem v-for="(photo, i) in photos" :key="i">
         <div class="p-1">
           <Card class="bg-yellow-200 border-0">
-            <CardContent class="flex aspect-6/4 items-center justify-center p-6">
+            <CardContent class="flex aspect-6/4 items-center justify-center p-6 bg-amber-500">
               <img
                 :src="`${props.basePath}/${photo}.jpg`"
                 class="w-full h-full object-cover "
