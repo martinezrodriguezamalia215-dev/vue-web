@@ -1,97 +1,46 @@
 <script setup lang="ts">
-import { House, Menu } from '@lucide/vue';
-import { ref, onMounted, onUnmounted } from 'vue';
-import { RouterLink } from 'vue-router';
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
-} from '@/components/ui/navigation-menu'
 import CarrusImaginum from '@/components/carrusImaginum.vue';
 import { scrollToSection } from '@/utils/scrollToSection';
-import { Toggle } from '@/components/ui/toggle'
 import { useMouseMotio } from '@/composables/UseMouseMotio'
+import NavigationPrimarius from '@/components/NavigationPrimarius.vue';
+
+
+
+
 const photos = ["justice", "arkham", "superman", "varios", "villana", "villano", "grupo", "robin", "anne", "joker", "resplandor", "cat", "gafas", "league", "fondoVerde"]; 
 
 const { mousePosition, cumMouseMove, cumMouseLeave } = useMouseMotio()
 
-const videreMenu = ref<boolean>(true)
-
-
-const handleResize = () => {
-  if (window.innerWidth < 640) {
-    videreMenu.value = false;
-  } else {
-    videreMenu.value = true;
+const menuItems = [
+  {
+    label: 'Portada' ,
+    href: '#',
+    onClick: () => scrollToSection('#')
+  },
+  {
+    label: 'Vehículos' ,
+    href: 'vehiculis',
+    onClick: () => scrollToSection('vehiculis')
+  },
+  {
+    label: 'Imágenes' ,
+    href: 'videre',
+    onClick: () => scrollToSection('videre')
+  },
+  {
+    label: 'Contacto' ,
+    href: 'contactus',
+    onClick: () => scrollToSection('contactus')
   }
-};
-
-onMounted(() => {
-  handleResize();
-  window.addEventListener('resize', handleResize);
-});
-
-
-onUnmounted(() => {
-  window.removeEventListener('resize', handleResize);
-});
-
-
+]
 
 </script>
 
 <template>
   <div class="batman">
 
-      <Toggle
-      class="fixed top-2 right-2 z-50 bg-amber-400 opacity-80 sm:hidden"
-      @click="videreMenu = !videreMenu"
-    >
-        <Menu />
-      </Toggle>
-
-    <nav v-if="videreMenu" class="extra-nav flex flex-col sm:flex-col justify-between px-3">
-      <RouterLink to="/">
-        <House class="icon-home" />
-      </RouterLink>
-      <NavigationMenu>
-        <NavigationMenuList class="flex flex-col sm:flex-row">
-          <NavigationMenuList>
-            <a href="#" @click.prevent="scrollToSection('#')">
-              <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'text-md hover:bg-brand-purple hover:text-white transition-colors']">
-                Portada
-              </NavigationMenuLink>
-            </a>
-          </NavigationMenuList>
-
-          <NavigationMenuItem>
-            <a href="#vehiculis"  @click.prevent="scrollToSection('vehiculis')">
-              <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'text-md hover:bg-brand-purple hover:text-white transition-colors']">
-                Vehículos
-              </NavigationMenuLink>
-            </a>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <a href="#videre" @click.prevent="scrollToSection('videre')">
-              <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'text-md hover:bg-brand-purple hover:text-white transition-colors']">
-                Imagenes
-              </NavigationMenuLink>
-            </a>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <a href="#contactus" @click.prevent="scrollToSection('contactous')">
-              <NavigationMenuLink :class="[navigationMenuTriggerStyle(), 'text-md hover:bg-brand-purple hover:text-white transition-colors']">
-                Contacto
-              </NavigationMenuLink>
-            </a>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
-    </nav>
+<NavigationPrimarius :items="menuItems" homeRouter="/" />
+      
   </div>
 
 
@@ -166,49 +115,15 @@ onUnmounted(() => {
   font-family: "BJCree", serif;  
 }
 
-
-.icon-home {
-  width: 3rem;
-  height: 3rem;
-  color: #a370c9;
-}
-
-.icon-home:hover {
-  color: #690000;
-  background-color: #a370c9;
-}
-
-.extra-nav {
-  background-color: white;
-  opacity: 0.7;
-  box-shadow: rgba(0, 0, 0, 0.7);
-  position: fixed;
-  top: 0;
-  width: 11rem;
-  border-radius: 0 0 1rem 0;
-  z-index: 1;
-}
-
-@media (min-width: 640px){
-  .extra-nav {
-    width: 100%;
-    border-radius: 0;
-    opacity: 1;
-    left: 0;
-  }
-}
-
-
-
 .titulus-img {
   background-size: 100% 100%;
   background-position: center center;
   background-image: url("../imagines/batman/batman.jpg");
-  aspect-ratio: 8/9;
+  aspect-ratio: 8/8;
 }
 
 .titulus-img:hover {
-  background-size: 115% 115%;
+  background-size: 100% 100%;
 }
 
 .titulus > h1 {
