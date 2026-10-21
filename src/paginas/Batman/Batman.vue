@@ -201,7 +201,7 @@ const menuItems = [
                 <Button variant="outline"></Button>
 
                   <span v-if="dies">
-                  {{ dies?.day }}/{ dies?.month }}/{ dies?.year }}
+                  {{ dies.day }}/{{ dies?.month }}/{{ dies?.year }}
                   </span>
 
                   <span v-else class="text-gray-500">
