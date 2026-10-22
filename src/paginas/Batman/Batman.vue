@@ -73,7 +73,7 @@ const mittereSubmit = async () => {
       position:"top-right",
       icon: LucideBadgeCheck, 
       style: {
-        background: "267cd860",
+        background: "267c",
         color: "#fff",
         whiteSpace: "pre-wrap"
       }
