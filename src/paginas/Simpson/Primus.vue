@@ -1,8 +1,50 @@
+<script setup lang="ts">
+import  Button  from '@/components/ui/button/Button.vue';
+import LogoSimpsons from '@/components/LogoSimpsons.vue';
+
+
+
+
+
+</script>
+
 <template>
     
-<h1 class="text-6xl text-amber-400 m.8 bg-amber-100 w-fit px-12 py-5 rounded-xl shadow-xl hover:text-b-500 hover:bg-blue-400 ">
-    Simpson page
-</h1>
+<div class="bg-simpsons-yellow min-h-screen text-center p-4 flex flex-col items-center justify-center">
+	
+    <LogoSimpsons estilus="w-[24rem] bg-red-500"/>
+    
+    <h1 class="text-xl my-1 font-medium">
+    	Discover some of the most amazing Quotes from The Simpsons
+	</h1>
+	<div>
+    	<strong>This is an unofficial app (even though it looks so cool!)</strong>
+	</div>
+    <div class="mt-8 flex gap-5">
+    	<Button variant="terciarius" size="elongatis" >
+      		<RouterLink to="/">Exit</RouterLink>
+    	</Button>
+    	<Button variant="terciarius" size="elongatis">
+      		<RouterLink to=""> Enter </RouterLink>
+    	</Button>
+    </div>
+
+        <div class="flex gap-12">
+    
+            <img class="object-contain hidden md:block"    src="/imagines/simpsons/bart.png"  width="200px" />
+
+            <img class="object-contain hidden md:block mt-20"    src="/imagines/simpsons/homer.png"  width="200px" />
+
+            <img class="object-contain mt-12 md:mt-0"    src="/imagines/simpsons/moe.png"  width="200px" />
+    
+
+    
+    </div>
+</div >
+
+
+
+
 
 </template>
 
