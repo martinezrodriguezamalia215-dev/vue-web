@@ -25,8 +25,13 @@ import LogoSimpsons from '@/components/LogoSimpsons.vue';
       		<RouterLink to="/">Exit</RouterLink>
     	</Button>
     	<Button variant="terciarius" size="elongatis">
-      		<RouterLink to=""> Enter </RouterLink>
+      		<RouterLink to="/Simpson/about"> Enter </RouterLink>
     	</Button>
+
+	
+
+
+
     </div>
 
         <div class="flex gap-12">

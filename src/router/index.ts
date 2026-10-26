@@ -43,22 +43,23 @@ export const router = createRouter({
                     name:"simpsons-about",
                     component: Primus
                 }, 
-                {   path:"gallery", // simpson/about
+                {   
+                    path:"gallery", // simpson/about
                     component: Layout,
                     children: [
                         {
                             path:"",    // simpson/about/
                             name:"simpsons-gallery",
                             component: Collectione
-                        },
-                        {
-                            path:"id",
-                            name:"simpson-detal",
-                            component: Character
                         }
-                    ],
+                    ]
                 },
+                {
                 
+                    path:":id",
+                    name:"simpsons-detail",
+                    component: Character
+                },
             ],
         },
         {
