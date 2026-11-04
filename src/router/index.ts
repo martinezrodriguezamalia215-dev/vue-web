@@ -34,32 +34,29 @@ export const router = createRouter({
                     children: [
                         {
                             path:"",    // simpson/about/
+                            name:"simpsons-about",
                             component: Circa
                         }
                     ],
                 },
-                 {
-                    path:"" ,  // simpson/
-                    name:"simpsons-about",
-                    component: Primus
-                }, 
+                  
                 {   
                     path:"gallery", // simpson/about
                     component: Layout,
                     children: [
                         {
-                            path:"",    // simpson/about/
-                            name:"simpsons-gallery",
+                            path:"",    // simpson/gallery
+                            name:"simpsons-characters",
                             component: Collectione
-                        }
+                        },
+                            {
+                                path:":id",   // simpson/gallery/23
+                                name:"simpsons-character",
+                                component: Character
+                            }
                     ]
                 },
-                {
                 
-                    path:":id",
-                    name:"simpsons-detail",
-                    component: Character
-                },
             ],
         },
         {
