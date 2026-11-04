@@ -1,12 +1,28 @@
 <script setup lang="ts">
 import {Card,CardContent } from '@/components/ui/card'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import {characters, type  Character } from './data'
 
+const inPagina = 6
 
+const nuncPagina = ref(1)
 
+const totalPaginae = Math.ceil(characters.length / inPagina)
 
-const listaSimpson = ref<Character[]>(characters.slice(0,6))
+const listaSimpson = computed(() => {
+  const inicio = (nuncPagina.value - 1) * inPagina
+  const fin = inicio + inPagina
+  return characters.slice(inicio, fin)
+})
+
+const ireAdPagina = (pagina: number) => {
+  if (pagina >= 1 && pagina <= totalPaginae) {
+    nuncPagina.value = pagina
+  }
+}
+
+const paginaNumeri: number[] = [...Array(totalPaginae).keys()].map(i => i + 1)
+
 
 </script>
 
@@ -34,11 +50,52 @@ const listaSimpson = ref<Character[]>(characters.slice(0,6))
             />
               <h2 class="font-medium text-lg ">{{ characters.nomen }}</h2>
             </CardContent>
-          </Card>
-          
-           
+          </Card>     
     </div>
-          
+
+    <div class="flex items-center justify-center gap-2 mt-4">
+  <button
+    
+    @click="ireAdPagina(nuncPagina - 1)"
+    :disabled="nuncPagina === 1"
+    :class="[
+      'px-4 py-2 rounded-md font-medium transition-colors',
+      nuncPagina === 1
+      ? 'bg-gray-300 text-gray-400 cursor-not-allowed'
+      : 'bg-simpsons-yellow hover:bg-simpsons-red hover:text-white'
+    ]"
+  >
+    Anterior
+  </button>
+
+  <button
+    v-for="pagina in paginaNumeri"
+    :key="pagina"
+    @click="ireAdPagina(pagina)"
+    :class="[
+      'w-10 h-10 rounded-md font-medium transition-colors',
+      nuncPagina === pagina 
+      ? 'bg-simpsons-red text-white' 
+      : 'bg-simpsons-yellow text-black'
+    ]"
+  >
+    {{ pagina }}
+  </button>
+
+  <button
+  @click="ireAdPagina(nuncPagina + 1)"
+    :disabled="nuncPagina === totalPaginae"
+    :class="[
+      'px-4 py-2 rounded-md font-medium transition-colors',
+      nuncPagina === totalPaginae
+      ? 'bg-gray-300 text-gray-400 cursor-not-allowed'
+      : 'bg-simpsons-yellow hover:bg-simpsons-red hover:text-white'
+    ]"
+  >
+    Siguiente
+  </button>
+</div>
+     
     </div>
 
 
