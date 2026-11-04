@@ -50,7 +50,7 @@ export const router = createRouter({
                             component: Collectione
                         },
                             {
-                                path:":id",   // simpson/gallery/23
+                                path:":id",   // simpson/gallery/2
                                 name:"simpsons-character",
                                 component: Character
                             }
