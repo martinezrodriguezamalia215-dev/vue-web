@@ -62,73 +62,81 @@ const selectedLabel = computed(() => {
 
 <template>
 
+<div
+    class="w-full max-w-page md:mx-auto my-8 px-5 md:px-5 "
+    v-if="character"
+>
+
+<div class="mb-8 ">
+  <label class="block text-lg font-bold mb-2 text-gray-800">Buscar personaje</label>
   <Popover v-model:open="open">
-    <PopoverTrigger as-child>
-      <Button
-        variant="outline"
-        role="combobox"
-        :aria-expanded="open"
-        class="w-[200px] justify-between"
-      >
+      <PopoverTrigger as-child>
+        <Button
+          variant="outline"
+          role="combobox"
+          :aria-expanded="open"
+          class="w-[200px] justify-between bg-red-500 text-white hover:bg-simpsons-yellow border border-2 border-black font-semibold shadow-md "
+        >
 
-        {{selectedLabel }}
-        <ChevronsUpDownIcon class="ml-2 h-4 w-4 shrink-0 opacity-50" />
-      </Button>
-    </PopoverTrigger>
-    <PopoverContent class="w-[200px] p-0">
-      <Command>
-        <CommandInput placeholder="Selecciona un personaje..." />
-        <CommandList>
-          <CommandEmpty>No framework found.</CommandEmpty>
-          <CommandGroup>
-            <CommandItem
-              v-for="simpson in simpsons"
-              :key="simpson.value"
-              :value="simpson.value"
-              @select="selectedCharacter(simpson.value)"
-            >
-              <CheckIcon
-                :class="cn(
-                  'mr-2 h-4 w-4',
-                  value === simpson.value ? 'opacity-100' : 'opacity-0',
-                )"
-              />
-              {{ simpson.label }}
-            </CommandItem>
-          </CommandGroup>
-        </CommandList>
-      </Command>
-    </PopoverContent>
-  </Popover>
+          {{selectedLabel }}
+          <ChevronsUpDownIcon class="ml-2 h-4 w-4 shrink-0 opacity-50" />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent class="w-[200px] p-0 border-2 border-black bg-amber-200 ">
+        <Command>
+          <CommandInput placeholder="Buscar..." />
+          <CommandList ">
+            <CommandEmpty>No se encontró.</CommandEmpty>
+            <CommandGroup class="  hover:bg-amber-950 hover:text-white cursor-pointer">
+              <CommandItem
+                v-for="simpson in simpsons"
+                :key="simpson.value"
+                :value="simpson.value"
+                @select="selectedCharacter(simpson.value)"
+                class=" hover:bg-amber-950 hover:text-white cursor-pointer "
+              >
+                <CheckIcon
+                  :class="cn(
+                    'mr-2 h-4 w-4',
+                    value === simpson.value ? 'opacity-100' : 'opacity-0',
+                  )"
+                />
+                {{ simpson.label }}
+              </CommandItem>
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
 
+</div>
 
 
 <div
-    class="flex flex-col lg:flex-row lg:justify-center lg:items-center gap-20 mt-5 w-auto "
-    v-if="character">
+    class="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-8 "
+>
         <div>
             <h1 class="titulus-quote"> 
                 {{ character.nomen }}
             </h1>
 
-            <div class="info-quote">
-                <p class="descriptione">
-                    {{ character.descriptione }}
-                </p>
-                
-                <div class="arca-quote" @click="router.push(`/Simpson/gallery`)">
-                    <p class="quote"> « {{ character.quote }} »</p>
-                </div>
+        <div class="info-quote">
+            <p class="descriptione">
+                {{ character.descriptione }}
+            </p>
+            
+            <div class="arca-quote" @click="router.push(`/Simpson/gallery`)">
+              <p class="quote"> « {{ character.quote }} »</p>
             </div>
         </div>
+      </div>
 
 
         <figure class="figure-quote">
-        <img :src="`/imagines/simpsons/${character.imago}`" alt="" />
+          <img :src="`/imagines/simpsons/${character.imago}`" alt="" />
         </figure>
-    
-    </div>
-    
+    </div> 
+</div>
 
     
 </template>
