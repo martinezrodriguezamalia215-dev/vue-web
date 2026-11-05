@@ -106,8 +106,8 @@ export const characters: Character[] = [
     id: 12,
     nomen: "Ralph Wiggum",
     imago: "ralph.png",
-    quote: "¿Aprobar el inglés? Eso es imposible.",
-    descriptione: "Es el hijo del jefe de policía de Springfield y su esposa. Ralph es conocido por ser inocente, tonto y un poco excéntrico, a menudo diciendo frases absurdas y comportándose de manera extraña. También es conocido por su amor por Lisa Simpson, a quien considera su novia y le dedica canciones y poemas."
+    quote: "Yo me llamo Ralph",
+    descriptione: "Es el hijo del jefe de policía Clancy Wiggum y su esposa Sarah Kanickee y compañero de clase de Lisa Simpson. Es bien conocido por su comportamiento errático, rozando incluso con la estupidez y la locura. Representa el estereotipo del escolar lerdo. También tiene algunos problemas de dicción, e incluso de ubicación, por ejemplo cuando fue a llevarle la tarea a Lisa cuando ella había estado enferma, le preguntó 'Oye, ¿yo vivo aquí?' a lo que Lisa contesta 'No, tú vives en otra casa' y él se va haciendo gestos como si fuese un tren y dice 'chu chu chu chu chu chu...', incluso llama a su profesora 'Mi mami de la escuela'."
   },
   { 
     id: 13,
@@ -171,5 +171,12 @@ export const characters: Character[] = [
     imago: "waylon.png",
     quote: "Creo que las mujeres y los marineros no deben mezclarse",
     descriptione: 'Es el asistente leal de Mr. Burns, el dueño de la planta nuclear de Springfield, y su relación es similar a la de un asistente personal y su jefe. Smithers es homosexual y está secretamente enamorado de su jefe, aunque este nunca lo ha correspondido. Es descrito como un personaje sumiso, servicial e ingenuo, aunque también es conocido por su inteligencia y habilidades empresariales.'
+  },
+  { 
+    id: 22,
+    nomen: "Maggie Simpson",
+    imago: "maggie.png",
+    quote: "D'oh!",
+    descriptione: "Es la hija menor de Homer y Marge Simpson. Es conocida por su característica forma de hablar y su comportamiento travieso. A pesar de ser muy pequeña, es bastante inteligente y tiene un gran sentido del humor."
   },
 ];
