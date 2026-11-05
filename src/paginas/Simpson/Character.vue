@@ -85,9 +85,9 @@ const selectedLabel = computed(() => {
       <PopoverContent class="w-[200px] p-0 border-2 border-black bg-amber-200 ">
         <Command>
           <CommandInput placeholder="Buscar..." />
-          <CommandList ">
+          <CommandList class="bg-amber-200 ">
             <CommandEmpty>No se encontró.</CommandEmpty>
-            <CommandGroup class="  hover:bg-amber-950 hover:text-white cursor-pointer">
+            <CommandGroup >
               <CommandItem
                 v-for="simpson in simpsons"
                 :key="simpson.value"

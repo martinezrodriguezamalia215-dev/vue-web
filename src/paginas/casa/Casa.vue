@@ -1,6 +1,22 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
 import { RouterLink } from 'vue-router';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
+import { Input } from '@/components/ui/input'
+import { ref } from 'vue';
+
+const dialogApertaEst = ref<boolean>(false)
+const quaestio = ref<string>('')
+
 </script>
 
 <template>
@@ -18,9 +34,42 @@ import { RouterLink } from 'vue-router';
       </p>
 
         <div class="z-10">
-          <Button variant="domus" class="mr-2">
-            <RouterLink to="/indecision">Si o no </RouterLink>
-          </Button>
+          <!-- <Button variant="domus" class="mr-2"> -->
+            <!-- <RouterLink to="/indecision">Si o no </RouterLink> -->
+          <!-- </Button> -->
+            <Dialog 
+            :open="dialogApertaEst"
+            @update:open="dialogApertaEst = $event"
+            >
+              
+                <DialogTrigger as-child>
+                    <Button variant="domus" class="mr-2">
+                        Si o no
+                    </Button>
+                </DialogTrigger>
+
+                <DialogContent class="sm:max-w-[425px] bg-domus-navy text-white border-domus-cyan border-2">
+                  <DialogHeader>
+                    <DialogTitle class="text-white">Pregúntame</DialogTitle>
+                    <DialogDescription class="text-gray-400">
+                      No sigas con tus dudas, yo te responderé SI o NO.
+                    </DialogDescription>
+                  </DialogHeader>
+                    <div class="mrt-4">
+                      <Input 
+                        class = "bg-domus-navy-input text-white placeholder:text.gray-400 border-domus-cyan" 
+                        type="text" placeholder="Escribe tu pregunta aquí..."
+                        v-model="quaestio"
+                      />
+                    
+                    </div>
+                
+                
+                </DialogContent>
+              
+              </Dialog>
+
+
 
           <Button variant="domus" class="mr-2">
             <RouterLink to="/Batman">Batman </RouterLink>
