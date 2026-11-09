@@ -34,7 +34,7 @@ const simpsons = characters.map(char => ({
 }))
 
 const open = ref(false)
-const value = ref(route.params.id)
+const value = ref(route.params.id ?.toString()) ||'';
 
 watch(() => route.params.id, (newId) => {
   value.value = newId?.toString() || '';
@@ -45,7 +45,7 @@ watch(() => route.params.id, (newId) => {
 
 const selectedCharacter =(characterId: string) => {
   value.value = characterId;
-  open.value = true;
+  open.value = false;
   router.push(`/Simpson/gallery/${characterId}`);
 }
 
@@ -93,7 +93,7 @@ const selectedLabel = computed(() => {
                 :key="simpson.value"
                 :value="simpson.value"
                 @select="selectedCharacter(simpson.value)"
-                class=" hover:bg-amber-950 hover:text-white cursor-pointer "
+                class=" data-[highlighted]:bg-amber-950 data-[highlighted]:text-white cursor-pointer "
               >
                 <CheckIcon
                   :class="cn(
